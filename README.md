@@ -22,19 +22,31 @@ progress.
 [playcatchfleet.com/manual](https://playcatchfleet.com/manual)
 
 <!-- [SCREENSHOT: Dex sayfası] ve [SCREENSHOT: ticket temalı fleet kartı]
-buraya eklenecek: docs/media/ altına koyup linkleyin -->
+buraya eklenecek: media/ altına koyup linkleyin -->
 
-## What you need to play
+## What this repository is
 
-- Any SDR that can hear 1090 MHz. A ~$30 RTL-SDR dongle with its stock
-  antenna is a perfectly good day-one station.
-- A decoder you probably already run: readsb, dump1090 or anything with
-  SBS1 (BaseStation) output.
-- Node.js LTS for the Listener.
-- An alpha invite. The full, honest requirements walk-through lives in the
-  [Flight Manual](https://playcatchfleet.com/manual).
+This is the **open side** of Catch Fleet. The application code lives in a
+private repository; what we publish here is everything that shapes it:
 
-## How it works
+| Path | What lives there |
+| --- | --- |
+| `docs/roadmap.md` | Product themes and milestone history (M0–M10 closed, M11 in planning) |
+| `docs/design-notes/` | Rarity, patches, and other feature design notes — the actual working documents |
+| `catalog/` | The catalog review data: `aircraft_variant_catalog_review.csv` with a documented decision for all 152 aircraft candidates, plus the review policy and its amendments |
+| `type-content/` | Per-type trivia, fun facts and specs, exactly as rendered in the game |
+| `devlog/` | Weekly alpha reports and change notes |
+
+Why this split? Catch Fleet is a solo project built with AI coding agents
+(more below), and the most honest thing to open isn't a pile of generated
+code — it's the decisions. Every aircraft in the catalog has a reviewed,
+sourced, written-down reason for existing at the granularity it does. That
+paper trail is this repo. The one piece of code you actually run on your own
+machine, the [Listener](https://github.com/catchfleet/listener), is fully
+open source — anything that touches your machine and your key should be
+inspectable, no exceptions.
+
+## How the game works
 
 ```txt
 your antenna → SDR → decoder (SBS1) → Listener → Catch Fleet → your Dex
@@ -50,10 +62,18 @@ your antenna → SDR → decoder (SBS1) → Listener → Catch Fleet → your De
   uncertainty.
 - The **catalog** is human-reviewed. Collection is keyed on ICAO hex, so you
   collect physical airframes, not registrations that change hands next
-  year. Every collectible identity in the catalog has a documented review
-  decision; imported metadata is evidence, never catalog authority.
+  year. Imported metadata is evidence, never catalog authority — the review
+  policy in `catalog/` is the law here.
 - Your **station keeps exploring** while you're away. Coming back feels
   like reading an expedition report.
+
+## What you need to play
+
+Any SDR that can hear 1090 MHz (a ~$30 RTL-SDR dongle with its stock antenna
+is a perfectly good day-one station), a decoder you probably already run
+with SBS1 output, Node.js LTS for the Listener, and an alpha invite. The
+full, honest walk-through lives in the
+[Flight Manual](https://playcatchfleet.com/manual).
 
 ## Privacy, stated plainly
 
@@ -66,30 +86,21 @@ your antenna → SDR → decoder (SBS1) → Listener → Catch Fleet → your De
 
 Catch Fleet is designed and run by Meriç ([TA3DIY](https://github.com/ta3diy)),
 a radio amateur, not a professional developer. AI coding agents write the
-code from written design docs; the founder does the game design, the catalog
-research, the reviews and the testing against his own antenna. The design
-docs, milestone plans and the catalog review data in this repository are the
-actual working documents, not marketing. If you're curious what one person
-plus AI tooling can ship, this repo is an honest answer.
+code from the written design docs you can read right here; the founder does
+the game design, the catalog research, the reviews and the testing against
+his own antenna. These are the actual working documents, not marketing. If
+you're curious what one person plus AI tooling can ship, this repo is an
+honest answer.
 
-## Repository tour
+## Issues and contributing
 
-| Path | What lives there |
-| --- | --- |
-| `docs/ROADMAP.md` | Product themes and milestone history (M0–M10 closed) |
-| `docs/systems/` | Engine docs: resolver, Dex engine, catalog review policy |
-| `docs/DESIGN_LANGUAGE.md` | The vintage airline-ticket visual identity |
-| `docs/ALPHA_BACKLOG.md` | Known issues and alpha feedback intake |
-| `data/type-content/` | Per-type trivia, specs and technical plates |
-
-## Contributing during the alpha
-
-The best contribution right now is **playing and reporting**: bug reports
-and setup-friction notes go to
-[Issues](https://github.com/catchfleet/game/issues). Catalog suggestions are
-welcome as issues too, but note that catalog changes follow the review
-policy in `docs/systems/CATALOG_REVIEW_POLICY.md`: sourced, decided,
-documented. Code PRs are not the focus while the alpha stabilizes.
+**Bug reports and setup-friction notes are the most valuable contribution
+during the alpha** — open them in
+[Issues](https://github.com/catchfleet/game/issues). Corrections to
+`type-content/` (a wrong range figure, a better fun fact) are very welcome
+as issues or PRs against this repo. Catalog suggestions are welcome too,
+with the caveat that catalog changes follow the review policy: sourced,
+decided, documented.
 
 ## Status
 
