@@ -32,18 +32,18 @@ private repository; what we publish here is everything that shapes it:
 | Path | What lives there |
 | --- | --- |
 | `docs/roadmap.md` | Product themes and milestone history (M0–M11 closed, M12 active) |
-| `docs/design-notes/` | Rarity, patches, and other feature design notes — the actual working documents |
+| `docs/design-notes/` | Rarity, patches, and other feature design notes: the actual working documents |
 | `catalog/` | The catalog review data: `aircraft_variant_catalog_review.csv` with a documented decision for all 171 aircraft candidates reviewed to date, plus the review policy and its amendments |
 | `type-content/` | Per-type trivia, fun facts and specs, exactly as rendered in the game |
 | `devlog/` | Weekly Alfa reports and change notes |
 
 Why this split? Catch Fleet is a solo project built with AI coding agents
 (more below), and the most honest thing to open isn't a pile of generated
-code — it's the decisions. Every aircraft in the catalog has a reviewed,
+code, it's the decisions. Every aircraft in the catalog has a reviewed,
 sourced, written-down reason for existing at the granularity it does. That
 paper trail is this repo. The one piece of code you actually run on your own
 machine, the [Listener](https://github.com/catchfleet/listener), is fully
-open source — anything that touches your machine and your key should be
+open source: anything that touches your machine and your key should be
 inspectable, no exceptions.
 
 ## How the game works
@@ -62,7 +62,7 @@ your antenna → SDR → decoder (SBS1) → Listener → Catch Fleet → your De
   uncertainty.
 - The **catalog** is human-reviewed. Collection is keyed on ICAO hex, so you
   collect physical airframes, not registrations that change hands next
-  year. Imported metadata is evidence, never catalog authority — the review
+  year. Imported metadata is evidence, never catalog authority; the review
   policy in `catalog/` is the law here.
 - Your **station keeps exploring** while you're away. Coming back feels
   like reading an expedition report.
@@ -95,7 +95,7 @@ honest answer.
 ## Issues and contributing
 
 **Bug reports and setup-friction notes are the most valuable contribution
-during the Alfa** — open them in
+during the Alfa**: open them in
 [Issues](https://github.com/catchfleet/catchfleet/issues). Corrections to
 `type-content/` (a wrong range figure, a better fun fact) are very welcome
 as issues or PRs against this repo. Catalog suggestions are welcome too,
